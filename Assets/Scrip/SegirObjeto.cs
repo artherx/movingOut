@@ -14,7 +14,7 @@ public class SegirObjeto : MonoBehaviour
     {
         if (objetoASeguir != null)
         {
-            Vector3 desiredPosition = new Vector3(objetoASeguir.position.x, transform.position.y, objetoASeguir.position.z-20);
+            Vector3 desiredPosition = new Vector3(objetoASeguir.position.x, transform.position.y, objetoASeguir.position.z-10);
             Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
             transform.position = smoothedPosition;
         }

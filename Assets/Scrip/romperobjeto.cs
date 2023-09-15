@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class romperobjeto : MonoBehaviour
 { 
-    public GameObject romperObjeto;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position.y <-50)
+        {
+            transform.position = new Vector3(1,2,7);
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
     }
 }

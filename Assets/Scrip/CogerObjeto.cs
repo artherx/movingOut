@@ -18,8 +18,7 @@ public class CogerObjeto : MonoBehaviour
     {
         if(Input.GetKeyUp("e")&&pickObjetc!=null && Input.GetKey("f")!=true)
         {
-            manoD.transform.rotation = manos.transform.rotation;
-            manoI.transform.rotation = manos.transform.rotation;
+           
             manoD.transform.position = mIPos + manos.transform.position;
             manoI.transform.position = mDPos + manos.transform.position;
             pickObjetc.GetComponent<Rigidbody>().useGravity = true;
@@ -31,8 +30,7 @@ public class CogerObjeto : MonoBehaviour
         }
         if(Input.GetKey("f")&&pickObjetc!=null&& Input.GetKey("e") != true)
         {
-            manoD.transform.position = mIPos + manos.transform.position;
-            manoI.transform.position = mDPos + manos.transform.position;
+            
             manoD.transform.rotation = manos.transform.rotation;
             manoI.transform.rotation = manos.transform.rotation;
             pickObjetc.GetComponent<Rigidbody>().useGravity = true;

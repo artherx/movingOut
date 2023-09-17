@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovPj : MonoBehaviour
 {
     public float Speed = 10.0f;
-    public float Rotate = 5.0f;
     public float saltar = 5f;
     public float gravedad = 9.8f;
     private float Vgravedad;
@@ -30,12 +30,12 @@ public class MovPj : MonoBehaviour
         float vert = Input.GetAxis("Vertical");
         
         
-        Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
-        moveDirection = Vector3.ClampMagnitude(moveDirection, 1);
+        /*Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
+        moveDirection = Vector3.ClampMagnitude(moveDirection, 1);*/
         
         //Rotacion
-        Rota= moveDirection;
-        player.transform.LookAt(player.transform.position+Rota);
+        Rota= new Vector3(hori, 0, vert);
+        player.transform.LookAt(player.transform.position+ Rota);
         
         //Gravedad
         setGravedad();

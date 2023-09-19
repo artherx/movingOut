@@ -7,6 +7,7 @@ public class MovPj : MonoBehaviour
 {
     public float Speed = 10.0f;
     public float saltar = 5f;
+    public Camera mainCam;
     public float gravedad = 9.8f;
     private float Vgravedad;
 
@@ -26,15 +27,16 @@ public class MovPj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float hori = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
+        Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
         
-        
-        /*Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
-        moveDirection = Vector3.ClampMagnitude(moveDirection, 1);*/
+        camD();
+        Rota= moveDirection.x*camRight + moveDirection.z*camForward;
         
         //Rotacion
-        Rota= new Vector3(hori, 0, vert);
+        //Rota= new Vector3(hori, 0, vert);
         player.transform.LookAt(player.transform.position+ Rota);
         
         //Gravedad
@@ -64,6 +66,19 @@ public class MovPj : MonoBehaviour
             
         
         
+    }
+    void camD()
+    {
+        camForward = mainCam.transform.forward;
+        camRight = mainCam.transform.right;
+
+        camForward.z=-camForward.y;
+        camRight.z=-camRight.y;
+        camForward.y=0;
+        camRight.y=0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
     }
     
     void setGravedad()

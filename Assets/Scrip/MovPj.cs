@@ -44,7 +44,7 @@ public class MovPj : MonoBehaviour
         {
             Vgravedad = -gravedad * Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 Vgravedad = saltar;
                 Rota.y = Vgravedad;

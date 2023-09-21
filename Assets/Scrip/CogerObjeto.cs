@@ -19,7 +19,7 @@ public class CogerObjeto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp("e")&&pickObjetc!=null && Input.GetKey("f")!=true)
+        if(Input.GetMouseButtonUp(0) && pickObjetc!=null && Input.GetKey("f")!=true)
         {
             pickObjetc.GetComponent<Rigidbody>().useGravity = true;
             pickObjetc.GetComponent<Rigidbody>().isKinematic = false;
@@ -28,14 +28,14 @@ public class CogerObjeto : MonoBehaviour
             Debug.Log("soltar objeto");
             
         }
-        if(Input.GetKey("f")&&pickObjetc!=null)
+        if(Input.GetMouseButton(1) && pickObjetc!=null)
         {
             t1= Time.time;
             t3=true;
             pickObjetc.GetComponent<Rigidbody>().useGravity = true;
             pickObjetc.GetComponent<Rigidbody>().isKinematic = false;
             pickObjetc.gameObject.transform.SetParent(null);
-            pickObjetc.GetComponent<Rigidbody>().AddForce((personaje.transform.forward+new Vector3(0,2,0))*fuerzaLanza);
+            pickObjetc.GetComponent<Rigidbody>().AddForce((personaje.transform.forward+new Vector3(0,1,0))*fuerzaLanza);
             
             pickObjetc = null;
             Debug.Log("lanzar objeto"+ transform.forward+"con fuerza:"+ transform.forward*fuerzaLanza);
@@ -49,7 +49,7 @@ public class CogerObjeto : MonoBehaviour
             t2= Time.time;
             if(t2-t1>=0.50&& t3==true) t3 = false;
             Debug.Log("objeto en rango");
-            if (Input.GetKey("e")&&pickObjetc==null&&t3==false)
+            if (Input.GetMouseButton(0) && pickObjetc==null&&t3==false)
             {
                 Debug.Log(t2-t1);
                 other.GetComponent<Rigidbody>().useGravity = false;

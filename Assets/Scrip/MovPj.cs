@@ -10,6 +10,7 @@ public class MovPj : MonoBehaviour
     public float gravedad = 9.8f;
     private float Vgravedad;
 
+    public Camera mainCam;
     private CharacterController player;
 
     private Vector3 camForward;
@@ -30,11 +31,11 @@ public class MovPj : MonoBehaviour
         float vert = Input.GetAxis("Vertical");
         
         
-        /*Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
-        moveDirection = Vector3.ClampMagnitude(moveDirection, 1);*/
+        Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
         
-        //Rotacion
-        Rota= new Vector3(hori, 0, vert);
+        //Rotacion 
+        camD();
+        Rota= moveDirection.x*camRight + moveDirection.z*camForward;
         player.transform.LookAt(player.transform.position+ Rota);
         
         //Gravedad
@@ -65,7 +66,17 @@ public class MovPj : MonoBehaviour
         
         
     }
-    
+    void camD()
+    {
+        camForward = mainCam.transform.forward;
+        camRight = mainCam.transform.right;
+
+        camForward.y=0;
+        camRight.y=0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
+    }
     void setGravedad()
     {
         if(player.isGrounded)

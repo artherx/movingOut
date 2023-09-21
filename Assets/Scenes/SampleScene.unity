@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.038415883, g: 0.055353403, b: 0.1186954, a: 1}
+  m_IndirectSpecularColor: {r: 0.038415954, g: 0.055353492, b: 0.118695736, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4504,6 +4504,7 @@ MonoBehaviour:
   Speed: 10
   saltar: 2.5
   gravedad: 9.8
+  mainCam: {fileID: 330585545}
 --- !u!143 &2028831524
 CharacterController:
   m_ObjectHideFlags: 0

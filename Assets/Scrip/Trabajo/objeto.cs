@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +10,21 @@ public class objeto : MonoBehaviour
     private float pf; 
     private Vector3 ub;
     private Vector3[] puntos= new Vector3[8];
-    void Update()
+    private Vector3 scala;
+    
+    private void Start()
     {
         al = transform.localScale.y/2;
         an = transform.localScale.x/2;
         pf = transform.localScale.z/2;
+        scala=new Vector3(an,al,pf);
+    }
+    private void Update() {
         ub=transform.position;
     }
-    
     private void setCollideR()
     {
+        Color color = Color.green;
         ub = transform.position;
         puntos[0]=new Vector3(al+ub.x, an+ub.y, pf+ub.z);
         puntos[1]=new Vector3(-al+ub.x, an+ub.y, pf+ub.z);
@@ -30,18 +36,25 @@ public class objeto : MonoBehaviour
 
         puntos[6]=new Vector3(al+ub.x, an+ub.y, -pf+ub.z);
         puntos[7]=new Vector3(al+ub.x, -an+ub.y, -pf+ub.z);
-    }
-    private void colicion(objeto other)
-    {
-        Vector3 disV = other.ub-ub;
-        float distM = disV.magnitude;
-        float minSX = an + other.an;
-        float minSY = al + other.al;
-        float minSZ = pf + other.pf;
+        Debug.DrawLine(puntos[0], puntos[1], color);
+        
 
-        if(distM <minSX||distM <minSY||distM <minSZ)
-        {
-            
-        }
+        
+    }
+    public Vector3 PuntoMinimo(objeto obj)
+    {
+        setCollideR();
+        Vector3 p1 = obj.transform.position + obj.scala;
+        Vector3 p2 = obj.transform.position - obj.scala;
+        Vector3 minimo = new Vector3(MathF.Min(p1.x,p2.x),MathF.Min(p1.y,p2.y),MathF.Min(p1.z,p2.z));
+        return minimo;
+    }
+    public Vector3 PuntoMaximo(objeto obj)
+    {
+        setCollideR();
+        Vector3 p1 = obj.transform.position + obj.scala;
+        Vector3 p2 = obj.transform.position - obj.scala;
+        Vector3 maximo = new Vector3(MathF.Max(p1.x,p2.x),MathF.Max(p1.y,p2.y),MathF.Max(p1.z,p2.z));
+        return maximo;
     }
 }

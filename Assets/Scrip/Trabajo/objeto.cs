@@ -14,10 +14,11 @@ public class objeto : MonoBehaviour
     public float masa=0f;
     public float vfx=0f;
     public float vfy=0f;
-    
-    
-    
-    
+    public float vfz = 0f;
+
+
+
+
     private void Start()
     {
         al = transform.localScale.y/2;
@@ -26,7 +27,7 @@ public class objeto : MonoBehaviour
         scala=new Vector3(an,al,pf);
     }
     private void Update() {
-        transform.Translate(new Vector3(1*vfx,1*vfy,0)*Time.deltaTime);
+        transform.Translate(new Vector3(1*vfx,1*vfy,1*vfz)*Time.deltaTime);
     }
     private void setCollideR()
     {

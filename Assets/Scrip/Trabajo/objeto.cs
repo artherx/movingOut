@@ -11,6 +11,12 @@ public class objeto : MonoBehaviour
     private Vector3 ub;
     private Vector3[] puntos= new Vector3[8];
     private Vector3 scala;
+    public float masa=0f;
+    public float vfx=0f;
+    public float vfy=0f;
+    
+    
+    
     
     private void Start()
     {
@@ -20,7 +26,7 @@ public class objeto : MonoBehaviour
         scala=new Vector3(an,al,pf);
     }
     private void Update() {
-        ub=transform.position;
+        transform.Translate(new Vector3(1*vfx,1*vfy,0)*Time.deltaTime);
     }
     private void setCollideR()
     {
@@ -56,5 +62,6 @@ public class objeto : MonoBehaviour
         Vector3 p2 = obj.transform.position - obj.scala;
         Vector3 maximo = new Vector3(MathF.Max(p1.x,p2.x),MathF.Max(p1.y,p2.y),MathF.Max(p1.z,p2.z));
         return maximo;
+        
     }
 }

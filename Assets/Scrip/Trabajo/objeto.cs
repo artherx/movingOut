@@ -15,6 +15,7 @@ public class objeto : MonoBehaviour
     public float vfx=0f;
     public float vfy=0f;
     public float vfz=0f;
+    public bool plano;
     
     
     
@@ -28,6 +29,12 @@ public class objeto : MonoBehaviour
     }
     private void Update() {
         transform.Translate(new Vector3(1*vfx,1*vfy,1*vfz)*Time.deltaTime);
+        
+    }
+    public Vector3 GetVelocidad()
+    {
+        Vector3 vel = new Vector3(1*vfx,1*vfy,1*vfz)*Time.deltaTime;
+        return vel;
     }
     private void setCollideR()
     {

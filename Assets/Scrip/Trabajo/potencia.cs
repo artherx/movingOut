@@ -5,6 +5,7 @@ using UnityEngine;
 public class potencia : MonoBehaviour
 {
     private float acelerator = 0.4f;
+    private float velocidad = 4f;
     private void Update() {
         
         transform.position= new Vector3(acelerator,0,0);

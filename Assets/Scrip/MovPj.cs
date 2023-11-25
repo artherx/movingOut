@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovPj : MonoBehaviour
 {
     public float Speed = 10.0f;
-    public float Rotate = 5.0f;
     public float saltar = 5f;
     public float gravedad = 9.8f;
     private float Vgravedad;
@@ -32,12 +32,11 @@ public class MovPj : MonoBehaviour
         
         
         Vector3 moveDirection = new Vector3(hori,0,vert).normalized;
-        moveDirection = Vector3.ClampMagnitude(moveDirection, 1);
         
-        //Rotacion
+        //Rotacion 
         camD();
         Rota= moveDirection.x*camRight + moveDirection.z*camForward;
-        player.transform.LookAt(player.transform.position+Rota);
+        player.transform.LookAt(player.transform.position+ Rota);
         
         //Gravedad
         setGravedad();
@@ -46,7 +45,7 @@ public class MovPj : MonoBehaviour
         {
             Vgravedad = -gravedad * Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 Vgravedad = saltar;
                 Rota.y = Vgravedad;
@@ -72,8 +71,6 @@ public class MovPj : MonoBehaviour
         camForward = mainCam.transform.forward;
         camRight = mainCam.transform.right;
 
-        camForward.z=-camForward.y;
-        camRight.z=-camRight.y;
         camForward.y=0;
         camRight.y=0;
 
